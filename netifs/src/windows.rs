@@ -96,7 +96,16 @@ pub fn get_interfaces() -> Result<Vec<Interface>, String> {
 
                 assert_ne!(current, addr.Next);
                 current = addr.Next;
-            }          
+            }
+
+            interface.is_ethernet = Some(match a.IfType {
+                winapi::shared::ipifcons::MIB_IF_TYPE_ETHERNET => true,
+                _ => false,
+            });
+            interface.is_wireless = Some(match a.IfType {
+                winapi::shared::ipifcons::IF_TYPE_IEEE80211 => true,
+                _ => false,
+            });
 
             res.push(interface);
             assert_ne!(adapterptr, a.Next);
