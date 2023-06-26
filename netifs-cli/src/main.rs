@@ -13,7 +13,7 @@ fn main() {
             println!("\t[wireless interface]");
         }
         if !interface.is_up {
-            print!("\t[interface is not up!]");
+            println!("\t[interface is not up!]");
         }
         if let Some(mac) = interface.mac_address {
             println!("\tMAC: {}", mac.to_hex_string());
