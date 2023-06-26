@@ -38,6 +38,8 @@ pub struct Interface {
     pub mac_address: Option<MacAddress>,
     pub is_loopback: bool,
     pub is_up: bool,
+    pub is_ethernet: Option<bool>,
+    pub is_wireless: Option<bool>,
 }
 
 impl Interface {
@@ -50,6 +52,8 @@ impl Interface {
             mac_address: None,
             is_loopback: false,
             is_up: false,
+            is_ethernet: None,
+            is_wireless: None,
         }
     }
 }
